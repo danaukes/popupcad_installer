@@ -30,6 +30,7 @@ packages.append('popupcad')
 packages.append('dev_tools')
 packages.append('popupcad_manufacturing_plugins')
 packages.append('popupcad_deprecated')
+packages.append('pypoly2tri')
 
 packages.append("scipy.integrate.vode")
 packages.append("scipy.integrate.lsoda")
@@ -48,6 +49,7 @@ include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/co
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
 include_files.append((fix(popupcad_parent_directory,'LICENSE.txt'),'LICENSE.txt'))
 include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
+include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
 include_files.extend(include_entire_directory(fix(popupcad_parent_directory,'licenses'),'licenses'))
 
 zip_includes = include_entire_directory(fix(python_installed_directory,"Lib\\site-packages\\OpenGL"),"OpenGL")
