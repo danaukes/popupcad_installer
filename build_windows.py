@@ -47,7 +47,7 @@ include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
-include_files.append((fix(popupcad_parent_directory,'LICENSE.txt'),'LICENSE.txt'))
+include_files.append((fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
 include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
 include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
 include_files.extend(include_entire_directory(fix(popupcad_parent_directory,'licenses'),'licenses'))
