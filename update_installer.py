@@ -31,9 +31,9 @@ def build_download_redirect(address,local_path):
     return redirect_filename
 
 def run():
-    files = glob.glob(local_directory+'\\*.msi')
+    files = glob.glob(os.path.normpath(os.path.join(local_directory,'*.msi')))
     basenames = sorted([os.path.basename(file) for file in files])
-    print(basenames)
+#    print(basenames)
     
     installer_basename = basenames[-1]
     installer_filename = os.path.normpath(os.path.join(local_directory,installer_basename))
@@ -56,8 +56,5 @@ def run():
     with open('putinfo.yaml','w') as f:
         putinfo = yaml.dump(putinfo,f)  
     
-#    return putinfo
-
-
 if __name__=='__main__':
-    newputinfo = run()
+    run()

@@ -72,10 +72,11 @@ def putfiles(putinfo,files):
             
     with pysftp.Connection(host = putinfo.host,username = putinfo.username,password = putinfo.password) as c:
         c.chdir(putinfo.directory)
-        print(c.listdir())
+        print('opened {}'.format(putinfo.host))
         for file in files:
+            print('uploading {0} ...'.format(file))
             c.put(file)
-            print(c.listdir())
+        print('finished.')
         c.close()
     return putinfo
 
