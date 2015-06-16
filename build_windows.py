@@ -9,6 +9,7 @@ import sys
 from cx_Freeze import setup, Executable
 import os
 from os.path import join,normpath,dirname
+import update_installer
 
 def fix(*args,**kwargs):
     return normpath(join(*args,**kwargs))
@@ -79,3 +80,4 @@ setup_arguments['executables'].append(Executable(fix(popupcad_parent_directory,"
 setup_arguments['options'] = setup_options
 
 setup(**setup_arguments)        
+update_installer.run()
