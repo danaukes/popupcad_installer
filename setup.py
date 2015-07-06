@@ -82,4 +82,4 @@ setup_arguments['executables'].append(Executable(fix(popupcad_parent_directory,"
 setup_arguments['options'] = setup_options
 
 setup(**setup_arguments)        
-update_installer.run()
+#update_installer.run()
