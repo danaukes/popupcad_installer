@@ -8,7 +8,6 @@ Created on Thu Jan 15 09:25:43 2015
 import pysftp
 import PySide.QtGui as qg
 import sys
-import os
 
 app = qg.QApplication(sys.argv)
 

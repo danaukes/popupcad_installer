@@ -9,7 +9,7 @@ import sys
 from cx_Freeze import setup, Executable
 import os
 from os.path import join,normpath,dirname
-import update_installer
+#import update_installer
 
 def fix(*args,**kwargs):
     return normpath(join(*args,**kwargs))
