@@ -56,6 +56,7 @@ include_files.extend(include_entire_directory(popupcad.documentation_directory ,
 include_files.extend(include_entire_directory('licenses','licenses'))
 
 zip_includes = include_entire_directory(fix(python_installed_directory,"Lib\\site-packages\\OpenGL"),"OpenGL")
+#zip_includes = include_entire_directory(fix(python_installed_directory,"Lib\\site-packages\\ezdxf-0.6.6-py3.4.egg\\ezdxf"),"ezdxf")
 
 includes = []
 excludes = []
