@@ -99,7 +99,7 @@ build_exe_options['icon']=popupcad.iconfile
 bdist_mac_options = {}
 bdist_mac_options['iconfile'] = popupcad.iconfile 
 #bdist_mac_options['qt_menu_nib'] = 
-bdist_mac_options['bundle_name'] = 'popupcad_b'
+bdist_mac_options['bundle_name'] = 'popupcad_bundle'
 #bdist_mac_options['include_frameworks'] = []
 #bdist_mac_options['codesign_identity'] = 
 #bdist_mac_options['codesign_entitlements'] = 
@@ -108,7 +108,7 @@ bdist_mac_options['bundle_name'] = 'popupcad_b'
 bdist_msi_options = {'upgrade_code': popupcad.windows_uuid}
 
 bdist_dmg_options = {}
-bdist_dmg_options['volume_label']='popupcad_v'
+bdist_dmg_options['volume_label']='popupcad_volume'
 #bdist_dmg_options['applications-shortcut']=True
 #bdist_dmg_options['']=
 
