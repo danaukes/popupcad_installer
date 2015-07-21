@@ -11,6 +11,11 @@ import os
 from os.path import join,normpath,dirname
 #import update_installer
 import glob
+import shutil
+
+# Remove the existing folders folder
+shutil.rmtree("build", ignore_errors=True)
+shutil.rmtree("dist", ignore_errors=True)
 
 def fix(*args,**kwargs):
     return normpath(join(*args,**kwargs))
