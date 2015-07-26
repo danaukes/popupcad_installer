@@ -2,3 +2,4 @@ build/*
 dist/*
 putinfo.yaml
 __pycache__*
+*.pyc

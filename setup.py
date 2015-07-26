@@ -9,7 +9,7 @@ import sys
 from cx_Freeze import setup, Executable
 import os
 from os.path import join,normpath,dirname
-import update_installer
+#import update_installer
 
 def fix(*args,**kwargs):
     return normpath(join(*args,**kwargs))
@@ -46,7 +46,10 @@ packages.append("lxml._elementpath")
 python_installed_directory = dirname(sys.executable)
 
 include_files = []
-include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/geos_c.dll'),'geos_c.dll'))
+if 'anaconda' in python_installed_directory.lower():
+    include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
+else:
+    include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/geos_c.dll'),'geos_c.dll'))
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
 include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
