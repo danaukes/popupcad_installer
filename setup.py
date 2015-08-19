@@ -38,6 +38,9 @@ packages.append('dev_tools')
 packages.append('popupcad_manufacturing_plugins')
 packages.append('popupcad_deprecated')
 packages.append('pypoly2tri')
+packages.append('tkinter')
+packages.append("matplotlib.backends.backend_qt4agg")
+packages.append("matplotlib.backends.backend_tkagg")
 
 #if sys.platform=='win32':
 packages.append("scipy.integrate.vode")
@@ -61,12 +64,13 @@ python_installed_directory = dirname(sys.executable)
 zip_includes = []
 include_files = []
 
+include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
+include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
+include_files.extend(include_entire_directory('licenses','licenses'))
+
 if sys.platform=='darwin':
-#    include_files.extend(glob.glob('/usr/local/Cellar/geos/3.4.2/lib/*.dylib'))
-#    include_files.extend(glob.glob('/usr/local/Cellar/geos/3.4.2/bin/lib'))
-    include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
-    include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
-    include_files.extend(include_entire_directory('licenses','licenses'))
+    pass
+elif sys.platform=='linux':
     pass
 elif sys.platform=='win32':
     include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/geos_c.dll'),'geos_c.dll'))
@@ -74,18 +78,11 @@ elif sys.platform=='win32':
     include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
     include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
     include_files.append((fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
-    include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
-    include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
-    include_files.extend(include_entire_directory('licenses','licenses'))
 
     zip_includes.extend(include_entire_directory(fix(python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
-elif sys.platform=='linux':
-    pass
 
 includes = []
 excludes = []
-#if sys.platform == 'darwin':
-#    excludes.append('scipy.special._ufuncs_cxx')
 
 build_exe_options = {}
 build_exe_options['include_msvcr']=True
@@ -105,6 +102,7 @@ bdist_mac_options['bundle_name'] = 'popupcad_bundle'
 #bdist_mac_options['codesign_entitlements'] = 
 #bdist_mac_options['codesign_deep'] = 
 #bdist_mac_options['codesign_resource_rules'] = 
+
 bdist_msi_options = {'upgrade_code': popupcad.windows_uuid}
 
 bdist_dmg_options = {}
