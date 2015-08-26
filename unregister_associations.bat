@@ -1,0 +1,1 @@
+reg delete HKCR\popupcadfile\ /f
