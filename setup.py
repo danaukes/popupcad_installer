@@ -65,7 +65,7 @@ zip_includes = []
 include_files = []
 
 include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
-include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
+#include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
 include_files.extend(include_entire_directory('licenses','licenses'))
 
 if sys.platform=='darwin':
