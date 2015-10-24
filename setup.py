@@ -36,7 +36,6 @@ packages = []
 packages.append('popupcad')
 packages.append('dev_tools')
 packages.append('popupcad_manufacturing_plugins')
-packages.append('popupcad_deprecated')
 packages.append('pypoly2tri')
 packages.append('tkinter')
 packages.append("matplotlib.backends.backend_qt4agg")

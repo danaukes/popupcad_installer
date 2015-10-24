@@ -35,7 +35,6 @@ packages.append('popupcad.widgets')
 
 packages.append('dev_tools')
 packages.append('popupcad_manufacturing_plugins')
-packages.append('popupcad_deprecated')
 
 #packages.append("numpy")
 #packages.append("scipy")
