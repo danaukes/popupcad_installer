@@ -10,12 +10,19 @@ from cx_Freeze import setup, Executable
 import os
 from os.path import join,normpath,dirname
 #import update_installer
-import glob
+#import glob
 import shutil
 
 # Remove the existing folders folder
 shutil.rmtree("build", ignore_errors=True)
 shutil.rmtree("dist", ignore_errors=True)
+
+import importlib
+
+def get_package_folder(name):
+    package = importlib.import_module('name')
+    dirname,filename = os.split(package.__file__)
+    return dirname
 
 def fix(*args,**kwargs):
     return normpath(join(*args,**kwargs))
@@ -72,10 +79,7 @@ if sys.platform=='darwin':
 elif sys.platform=='linux':
     pass
 elif sys.platform=='win32':
-    if 'anaconda' in python_installed_directory.lower():
-        include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
-    else:
-        include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/geos_c.dll'),'geos_c.dll'))
+    include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
     include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
     include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
     include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
