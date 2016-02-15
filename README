@@ -1,0 +1,9 @@
+Notes
+-------
+### Scipy workaround for windows:
+
+>I had exactly the same issue. Found the solution here: https://bitbucket.org/anthony_tuininga/cx_freeze/issues/43/import-errors-when-using-cx_freeze-with
+>
+> Find the hooks.py file in cx_freeze folder. Change line 548 from finder.IncludePackage("scipy.lib") to finder.IncludePackage("scipy._lib").
+>
+> Leave the "scipy" entry in packages and delete 'C:\Python34\Lib\site-packages\scipy' in include_files.
