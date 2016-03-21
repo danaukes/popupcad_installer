@@ -12,12 +12,12 @@ from os.path import join,normpath,dirname
 #import update_installer
 #import glob
 import shutil
+import importlib
 
 # Remove the existing folders folder
 shutil.rmtree("build", ignore_errors=True)
 shutil.rmtree("dist", ignore_errors=True)
 
-import importlib
 
 def get_package_folder(name):
     package = importlib.import_module('name')
