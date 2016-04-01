@@ -14,3 +14,6 @@ When you try to freeze shapely, an exception is thrown because this particular p
 shapely/geos.py, line 134
 -        wininst_dlls = os.path.abspath(os.__file__ + "../../../DLLs")
 +        wininst_dlls = os.path.normpath(os.path.abspath(sys.executable+'../../DLLS'))
+
+### EZDXF
+currently 0.7.4 does not work, revert to 0.7.0
