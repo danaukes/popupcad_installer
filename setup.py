@@ -89,7 +89,7 @@ elif sys.platform=='win32':
     zip_includes.extend(include_entire_directory(fix(python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
 
 includes = []
-excludes = []
+excludes = ['popupcad_gazebo']
 
 build_exe_options = {}
 build_exe_options['include_msvcr']=True
