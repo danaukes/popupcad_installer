@@ -8,36 +8,17 @@ import popupcad
 import sys
 from cx_Freeze import setup, Executable
 import os
-from os.path import join,normpath,dirname
 #import update_installer
 #import glob
 import shutil
-import importlib
 
 # Remove the existing folders folder
 shutil.rmtree("build", ignore_errors=True)
 shutil.rmtree("dist", ignore_errors=True)
 
-
-def get_package_folder(name):
-    package = importlib.import_module('name')
-    dirname,filename = os.split(package.__file__)
-    return dirname
-
-def fix(*args,**kwargs):
-    return normpath(join(*args,**kwargs))
+import idealab_tools.setup_tools as st
     
-def include_entire_directory(source_dir,dest_dir):
-    m = len(source_dir)
-    include = [(source_dir, dest_dir)]
-    for root, subfolders, files in os.walk(source_dir):
-        for filename in files:
-            source = fix(root, filename)
-            dest = fix(dest_dir, root[m+1:], filename)
-            include.append((source,dest))
-    return include
-    
-popupcad_parent_directory = fix(popupcad.localpath,'../')
+popupcad_parent_directory = st.fix(popupcad.localpath,'../')
 
 packages = []
 packages.append('popupcad')
@@ -67,27 +48,27 @@ packages.append("scipy")
 packages.append("lxml")
 packages.append("lxml._elementpath")
 
-python_installed_directory = dirname(sys.executable)
+python_installed_directory = os.path.dirname(sys.executable)
 
 zip_includes = []
 include_files = []
 
-include_files.extend(include_entire_directory(popupcad.supportfiledir,'supportfiles'))
+include_files.extend(st.include_entire_directory(popupcad.supportfiledir,'supportfiles'))
 #include_files.extend(include_entire_directory(popupcad.documentation_directory ,'docs'))
-include_files.extend(include_entire_directory('licenses','licenses'))
+include_files.extend(st.include_entire_directory('licenses','licenses'))
 
 if sys.platform=='darwin':
     pass
 elif sys.platform=='linux':
     pass
 elif sys.platform=='win32':
-    include_files.append((fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
-    include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
-    include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
-    include_files.append((fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
-    include_files.append((fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
+    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
+    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
+    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
+    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
+    include_files.append((st.fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
 
-    zip_includes.extend(include_entire_directory(fix(python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
+    zip_includes.extend(st.include_entire_directory(st.fix(python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
 
 includes = []
 excludes = ['popupcad_gazebo']
@@ -135,7 +116,7 @@ setup_arguments['author_email'] = popupcad.author_email
 setup_arguments['version'] = popupcad.version
 setup_arguments['description'] = popupcad.description
 setup_arguments['executables'] = []
-setup_arguments['executables'].append(Executable(fix(popupcad_parent_directory,"popupcad.py"), base=base,shortcutName=popupcad.program_name,shortcutDir="ProgramMenuFolder"))
+setup_arguments['executables'].append(Executable(st.fix(popupcad_parent_directory,"popupcad.py"), base=base,shortcutName=popupcad.program_name,shortcutDir="ProgramMenuFolder"))
 setup_arguments['options'] = setup_options
 
 setup(**setup_arguments)        
