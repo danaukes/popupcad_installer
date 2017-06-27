@@ -48,8 +48,6 @@ packages.append("scipy")
 packages.append("lxml")
 packages.append("lxml._elementpath")
 
-python_installed_directory = os.path.dirname(sys.executable)
-
 zip_includes = []
 include_files = []
 
@@ -62,13 +60,13 @@ if sys.platform=='darwin':
 elif sys.platform=='linux':
     pass
 elif sys.platform=='win32':
-    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
-    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
-    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
-    include_files.append((st.fix(python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
+    include_files.append((st.fix(st.python_installed_directory,'Lib/site-packages/shapely/DLLs/geos_c.dll'),'geos_c.dll'))
+    include_files.append((st.fix(st.python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
+    include_files.append((st.fix(st.python_installed_directory,'Lib/site-packages/numpy/core/libifcoremd.dll'),'libifcoremd.dll'))
+    include_files.append((st.fix(st.python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
     include_files.append((st.fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
 
-    zip_includes.extend(st.include_entire_directory(st.fix(python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
+    zip_includes.extend(st.include_entire_directory(st.fix(st.python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
 
 includes = []
 excludes = ['popupcad_gazebo']
