@@ -8,7 +8,6 @@ import popupcad
 import sys
 from cx_Freeze import setup, Executable
 import os
-#import update_installer
 #import glob
 import shutil
 
@@ -118,4 +117,3 @@ setup_arguments['executables'].append(Executable(st.fix(popupcad_parent_director
 setup_arguments['options'] = setup_options
 
 setup(**setup_arguments)        
-#update_installer.run()
