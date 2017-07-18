@@ -8,9 +8,28 @@ Notes
 >
 > Leave the "scipy" entry in packages and delete 'C:\Python34\Lib\site-packages\scipy' in include_files.
 
-### Shapely workaround
-When you try to freeze shapely, an exception is thrown because this particular piece of code doesnt' work when frozen. I've tested this on a windows machine in both the frozen and unfrozen versions, and it seems to work.
+### If there is a problem with cKDTree and ckdtree:
+in lib/site-packages/scipy/spatial/__init__.py, comment out:
 
-shapely/geos.py, line 134
--        wininst_dlls = os.path.abspath(os.__file__ + "../../../DLLs")
-+        wininst_dlls = os.path.normpath(os.path.abspath(sys.executable+'../../DLLS'))
+from ckdtree import *
+
+### add working directory:
+from https://stackoverflow.com/questions/24195311/how-to-set-shortcut-working-directory-in-cx-freeze-msi-bundle
+
+> I was able to fix the problem by making a small change to cx_Freeze/windist.py. In add_config(), line 61, I changed:
+> 
+> msilib.add_data(self.db, "Shortcut",
+>         [("S_APP_%s" % index, executable.shortcutDir,
+>                 executable.shortcutName, "TARGETDIR",
+>                 "[TARGETDIR]%s" % baseName, None, None, None,
+>                 None, None, None, None)])
+> to
+> 
+> msilib.add_data(self.db, "Shortcut",
+>         [("S_APP_%s" % index, executable.shortcutDir,
+>                 executable.shortcutName, "TARGETDIR",
+>                 "[TARGETDIR]%s" % baseName, None, None, None,
+>                 None, None, None, "TARGETDIR")]) # <--- Working directory.
+
+something to think about later...
+https://stackoverflow.com/questions/9986731/how-do-i-specify-the-default-install-path-of-an-msi-in-cx-freeze-and-distutils
