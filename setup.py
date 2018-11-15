@@ -65,8 +65,10 @@ include_files.append((st.fix(st.python_installed_directory,'Library/bin/geos.dll
 #include_files.append((st.fix(st.python_installed_directory,'Lib/site-packages/numpy/core/libmmd.dll'),'libmmd.dll'))
 include_files.append((st.fix(popupcad_parent_directory,'LICENSE'),'LICENSE'))
 
-include_files.extend(st.include_entire_directory('C:\\Miniconda3\\Library\\plugins\\platforms',''))
-include_files.extend(st.include_entire_directory('C:\\Miniconda3\\Library\\bin',''))
+#include_files.extend(st.include_entire_directory('C:\\Miniconda3\\Library\\plugins\\platforms',''))
+#include_files.extend(st.include_entire_directory('C:\\Miniconda3\\Library\\bin',''))
+include_files.extend(st.include_entire_directory('C:\\ProgramData\\Miniconda3\\Library\\plugins\\platforms',''))
+include_files.extend(st.include_entire_directory('C:\\ProgramData\\Miniconda3\\Library\\bin',''))
 
 zip_includes.extend(st.include_entire_directory(st.fix(st.python_installed_directory,"Lib/site-packages/OpenGL"),"OpenGL"))
 
