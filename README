@@ -33,3 +33,5 @@ from https://stackoverflow.com/questions/24195311/how-to-set-shortcut-working-di
 
 something to think about later...
 https://stackoverflow.com/questions/9986731/how-do-i-specify-the-default-install-path-of-an-msi-in-cx-freeze-and-distutils
+
+### rename async to _async in opengl package EVERYWHERE

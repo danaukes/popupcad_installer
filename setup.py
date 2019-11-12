@@ -103,6 +103,7 @@ excludes.append('spyder')
 excludes.append('ipython')
 excludes.append('jupyter_client')
 excludes.append('jupyter_core')
+excludes.append('sqlite3')
 
 
 build_exe_options = {}
@@ -129,7 +130,7 @@ setup_arguments['author_email'] = popupcad.author_email
 setup_arguments['version'] = popupcad.version
 setup_arguments['description'] = popupcad.description
 setup_arguments['executables'] = []
-setup_arguments['executables'].append(Executable(st.fix(popupcad_parent_directory,"popupcad.py"), base=base,shortcutName=popupcad.program_name,shortcutDir="ProgramMenuFolder"))
+setup_arguments['executables'].append(Executable(st.fix(popupcad_parent_directory,"popupcad.py"), base=base,shortcutName=popupcad.program_name,shortcutDir="ProgramMenuFolder", icon = st.fix(popupcad_parent_directory,"popupcad/supportfiles/printapede.ico")))
 setup_arguments['options'] = setup_options
 
 
